@@ -9,7 +9,7 @@ using Victorina.Core.Models;
 
 namespace Victorina.DAL
 {
-    internal class VictorinaDao : IVictorinaDao
+    public class VictorinaDao : IVictorinaDao
     {
         private const string PATH = "C:\\Users\\soubi\\source\\repos\\Victorina2\\Victorina.json";
         public void Create(Quiz quiz)
@@ -28,7 +28,7 @@ namespace Victorina.DAL
             Write(quizzes);
         }
 
-        public List<Quiz> GetQuiz ()
+        public List<Quiz> GetQuiz()
         {
             var quizzes = new List<Quiz>();
 
@@ -41,6 +41,20 @@ namespace Victorina.DAL
             }
 
             return quizzes;
+        }
+
+        public void WriteAnswer(Quiz quize, Index index)
+        {
+            var quizzes = new List<Quiz>();
+
+            using (FileStream fs = new FileStream(PATH, FileMode.OpenOrCreate))
+            {
+                quizzes = JsonSerializer.Deserialize<List<Quiz>>(fs);
+            }
+
+            quizzes[index] = quize;
+
+            Write(quizzes);
         }
 
         private void Write(List<Quiz> quizzes)

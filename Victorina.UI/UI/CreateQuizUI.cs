@@ -18,23 +18,7 @@ namespace Victorina.UI.UI
             bool isError = true;
             Console.WriteLine("Введите название опросника:");
             string quizName = Console.ReadLine();
-
-            //int count = 0;
-
-            //Console.WriteLine("Введите количество вопросов, из которых будет состоять опросник:");
-            
-            //while (isError)
-            //{
-            //    try
-            //    {
-            //        count = Convert.ToInt32(Console.ReadLine());
-            //        isError = false;
-            //    }
-            //    catch
-            //    {
-            //        Console.WriteLine("Введите коректное число");
-            //    }
-            //}
+            Console.WriteLine();
 
             List<Question> questions = new List<Question>();
   
@@ -42,17 +26,20 @@ namespace Victorina.UI.UI
 
             do
             {
-                var newQuestionName = new Question();
 
                 Console.WriteLine("Введите вопрос: ");
                 Console.WriteLine();
 
-                newQuestionName.Name = Console.ReadLine();
+                string name = Console.ReadLine();
+                var newQuestionName = new Question(name, string.Empty);
 
                 questions.Add(newQuestionName);
 
+                Console.WriteLine();
                 Console.WriteLine("Добавить вопрос?");
                 Console.WriteLine($"1 - да / 0 - нет");
+                Console.WriteLine();
+
                 int choice =  Convert.ToInt32(Console.ReadLine());
                 
                 if(choice == 1)
@@ -78,22 +65,26 @@ namespace Victorina.UI.UI
         {
             Console.WriteLine("Введите название опросника для прохождения: ");
             string startName = Console.ReadLine();
+            Console.WriteLine();
 
             Quiz quizToStart = _createVictorina.TakeQuizByName(startName);
 
-            for (int i = 0; i < quizToStart.Questions.Count; i++)
+            for (int i = 0; i < quizToStart?.Questions?.Count; i++)
             {
                 Console.WriteLine($"Вопрос №{i + 1}: {quizToStart.Questions[i].Name}");
                 Console.WriteLine("Ответ: ");
                 quizToStart.Questions[i].Answer = Console.ReadLine();
                 Console.WriteLine();
+
             }
         }
 
         public static void PrintQuiz()
         {
+            Console.WriteLine();
             Console.WriteLine("Введите название опросника для выведения на консоль: ");
             string nameToPrint = Console.ReadLine();
+            Console.WriteLine();
 
             Quiz quizToPrint = _createVictorina.TakeQuizByName(nameToPrint);
 

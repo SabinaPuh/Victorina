@@ -3,12 +3,14 @@
     public class Quiz
     {
         public string QuizName { get; set; }
-        public List<Question> Questions = new List<Question>();
+        public List<Question> Questions { get; set; }
 
-        public Quiz(string name, List<Question> questions)
+
+        public Quiz(string quizName, List<Question> questions)
         {
-            QuizName = name; 
+            QuizName = quizName; 
             Questions = questions;
         }
+
     }
 }

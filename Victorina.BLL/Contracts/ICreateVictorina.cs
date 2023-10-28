@@ -14,6 +14,7 @@ namespace Victorina.BLL.Contracts
     public interface ICreateVictorina
     {
         void Create(string name, List<Question> questions);
+        void WriteAnswer(Quiz quiz);
         Quiz TakeQuizByName(string name);
     }
 }

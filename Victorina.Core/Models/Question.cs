@@ -5,12 +5,6 @@
         public string Name { get; set; }
         public string Answer { get; set; }
 
-        public Question()
-        {
-            Name = " ";
-            Answer = " ";
-        }
-
         public Question(string name, string answer)
         {
             Name = name;

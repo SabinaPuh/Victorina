@@ -15,6 +15,10 @@ namespace Victorina.BLL
             _quiz.Create(quiz);
 
         }
+        public void WriteAnswer(Quiz quiz)
+        {
+            _quiz.WriteAnswer(quiz, 0);
+        }
 
         public Quiz TakeQuizByName(string name)
         {

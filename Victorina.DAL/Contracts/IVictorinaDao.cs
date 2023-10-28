@@ -11,6 +11,7 @@ namespace Victorina.DAL.Contracts
     public interface IVictorinaDao
     {
         void Create(Quiz quiz);
+        List<Quiz> GetQuiz();
 
     }
 }
