@@ -7,7 +7,7 @@ namespace Victorina.BLL
 {
     public class CreateVictorina : ICreateVictorina
     {
-        private readonly VictorinaDao _quiz = new VictorinaDao();
+        private readonly IVictorinaDao _quiz = new VictorinaDao();
 
         public void Create(string name, List<Question> questions)
         {
